@@ -1,0 +1,31 @@
+# Large data files - not needed in repo, re-download from Geofabrik
+data/
+
+# Database dumps
+app/geodb_backup_0538.dump
+*.dump
+
+# Python virtual environment
+app/backend/venv/
+venv/
+__pycache__/
+*.pyc
+
+# Backup/broken copies from debugging
+mapnik_backup/
+openstreetmap-carto-broken/
+
+# openstreetmap-carto (clone separately per README instructions)
+openstreetmap-carto/
+
+# Contains DB password - never commit
+mapnik.xml
+app/mapnik.xml
+
+# Misc test/log files
+test.png
+restore_polygon_line.log
+
+# OS/editor junk
+.DS_Store
+*.swp

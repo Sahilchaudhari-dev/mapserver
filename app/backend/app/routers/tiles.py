@@ -9,8 +9,8 @@ APACHE_TILE_URL = "http://localhost/osm_tiles"
 client = httpx.AsyncClient(
     timeout=60,
     limits=httpx.Limits(
-        max_connections=20,
-        max_keepalive_connections=10
+        max_connections=200,
+        max_keepalive_connections=100
     )
 )
 

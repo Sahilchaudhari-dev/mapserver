@@ -27,12 +27,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Geo Module API", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5180",
-        "https://apnic-hosted-inns-rising.trycloudflare.com",  # your current tunnel URL
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

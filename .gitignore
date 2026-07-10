@@ -29,3 +29,4 @@ restore_polygon_line.log
 # OS/editor junk
 .DS_Store
 *.swp
+app/.env

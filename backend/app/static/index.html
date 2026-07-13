@@ -32,10 +32,10 @@
         attribution: "Self-hosted OSM",
         maxZoom: 18,
       }).addTo(map);
-      fetch("/api/boundaries/india")
+      fetch("/api/map-init")
         .then((response) => response.json())
         .then((data) => {
-          L.geoJSON(data, {
+          L.geoJSON(data.boundary, {
             style: {
               color: "#000000",
               weight: 1,

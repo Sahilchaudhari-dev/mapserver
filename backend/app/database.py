@@ -3,11 +3,9 @@ from psycopg2 import pool
 from psycopg2.extras import RealDictCursor
 from app.config import settings
 
-# Connection pool — created once when app starts
-# reuses existing connections instead of opening new ones each time
 connection_pool = pool.SimpleConnectionPool(
-    minconn=1,   # minimum connections to keep open
-    maxconn=10,  # maximum connections allowed
+    minconn=1,   
+    maxconn=10,
     host=settings.db_host,
     port=settings.db_port,
     dbname=settings.db_name,
@@ -17,12 +15,10 @@ connection_pool = pool.SimpleConnectionPool(
 )
 
 def get_connection():
-    # gets an existing connection from pool instead of opening new one
-    return connection_pool.getconn()
+     return connection_pool.getconn()
 
 def release_connection(conn):
-    # returns connection back to pool for reuse
-    connection_pool.putconn(conn)
+       connection_pool.putconn(conn)
 
 def test_connection():
     conn = None
@@ -33,8 +29,9 @@ def test_connection():
         result = cur.fetchone()
         cur.close()
         return result
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception:
+        logger.exception("Database connection test failed")
+        raise
     finally:
         if conn:
-            release_connection(conn)  # always returns to pool even if error
+            release_connection(conn)

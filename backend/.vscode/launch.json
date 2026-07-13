@@ -9,7 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
-            "project":"C:/Users/sahil/OneDrive/Desktop/Mapserver/backend",
+            "project":"/home/sahil/mapserver/backend",
             "args": [
                 "app.main:app",
                 "--reload"

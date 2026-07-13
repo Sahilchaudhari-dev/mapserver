@@ -1,4 +1,9 @@
+import logging
+from fastapi import HTTPException
 from app.database import get_connection, release_connection
+
+logger = logging.getLogger(__name__)
+
 
 def fetch_india_boundary():
     conn = None
@@ -22,8 +27,9 @@ def fetch_india_boundary():
             "properties": {"source": result["source"]}
         }
 
-    except Exception as e:
-        raise Exception(f"Database error: {str(e)}")
+    except Exception:
+        logger.exception("Failed to fetch India boundary")
+        raise HTTPException(status_code=500, detail="Failed to fetch boundary data")
 
     finally:
         if conn:
